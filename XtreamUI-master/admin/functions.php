@@ -74,11 +74,11 @@ date_default_timezone_set(getTimezone());
 $rAdminSettings = getAdminSettings();
 $rSettings = getSettings();
 
-//if ((strlen($rAdminSettings["language"]) > 0) && (file_exists("./lang/".$rAdminSettings["language"].".php"))) {
-    //include "./lang/".$rAdminSettings["language"].".php";
-//} else {
+if ((strlen($rAdminSettings["language"]) > 0) && (file_exists("./lang/".$rAdminSettings["language"].".php"))) {
+    include "./lang/".$rAdminSettings["language"].".php";
+} else {
     include "./lang/en.php";
-//}
+}
 
 $detect = new Mobile_Detect;
 $rClientFilters = Array(
@@ -1384,7 +1384,7 @@ function checkTable($rTable) {
         "watch_categories" => Array("CREATE TABLE `watch_categories` (`id` int(11) NOT NULL AUTO_INCREMENT, `type` int(1) NOT NULL DEFAULT '0', `genre_id` int(8) NOT NULL DEFAULT '0', `genre` varchar(64) NOT NULL DEFAULT '', `category_id` int(8) NOT NULL DEFAULT '0', `bouquets` varchar(4096) NOT NULL DEFAULT '[]', PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=latin1", "INSERT INTO `watch_categories` (`id`, `type`, `genre_id`, `genre`, `category_id`, `bouquets`) VALUES (1, 1, 28, 'Action', 0, '[]'), (2, 1, 12, 'Adventure', 0, '[]'), (3, 1, 16, 'Animation', 0, '[]'), (4, 1, 35, 'Comedy', 0, '[]'), (5, 1, 80, 'Crime', 0, '[]'), (6, 1, 99, 'Documentary', 0, '[]'), (7, 1, 18, 'Drama', 0, '[]'), (8, 1, 10751, 'Family', 0, '[]'), (9, 1, 14, 'Fantasy', 0, '[]'), (10, 1, 36, 'History', 0, '[]'), (11, 1, 27, 'Horror', 0, '[]'), (12, 1, 10402, 'Music', 0, '[]'), (13, 1, 9648, 'Mystery', 0, '[]'), (14, 1, 10749, 'Romance', 0, '[]'), (15, 1, 878, 'Science Fiction', 0, '[]'), (16, 1, 10770, 'TV Movie', 0, '[]'), (17, 1, 53, 'Thriller', 0, '[]'), (18, 1, 10752, 'War', 0, '[]'), (19, 1, 37, 'Western', 0, '[]');"),
         "watch_output" => Array("CREATE TABLE `watch_output` (`id` int(11) NOT NULL AUTO_INCREMENT, `type` int(1) NOT NULL DEFAULT '0', `server_id` int(8) NOT NULL DEFAULT '0', `filename` varchar(4096) NOT NULL DEFAULT '', `status` int(1) NOT NULL DEFAULT '0', `stream_id` int(8) NOT NULL DEFAULT '0', `dateadded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=latin1;"),
 		"login_flood" => Array("CREATE TABLE `login_flood` (`id` int(11) NOT NULL AUTO_INCREMENT, `username` varchar(128) NOT NULL DEFAULT '', `ip` varchar(64) NOT NULL DEFAULT '', `dateadded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=latin1;"),
-        "languages" => Array("CREATE TABLE `languages` (`key` varchar(128) NOT NULL DEFAULT '', `language` varchar(4096) NOT NULL DEFAULT '', PRIMARY KEY (`key`)) ENGINE=InnoDB DEFAULT CHARSET=latin1;", "INSERT INTO `languages`(`key`, `language`) VALUES('en', 'English');"),
+        "languages" => Array("CREATE TABLE `languages` (`key` varchar(128) NOT NULL DEFAULT '', `language` varchar(4096) NOT NULL DEFAULT '', PRIMARY KEY (`key`)) ENGINE=InnoDB DEFAULT CHARSET=latin1;", "INSERT INTO `languages`(`key`, `language`) VALUES('en', 'English'),('it', 'Italiano'),('de', 'Deutsch'),('es', 'Espanol'),('ru', 'Russian');"),
 		"dashboard_statistics" => Array("CREATE TABLE `dashboard_statistics` (`id` int(11) NOT NULL AUTO_INCREMENT, `type` varchar(16) NOT NULL DEFAULT '', `time` INT(16) NOT NULL DEFAULT '0', `count` INT(16) NOT NULL DEFAULT '0', PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=latin1;"),
     );
     if ((!$db->query("DESCRIBE `".$rTable."`;")) && (isset($rTableQuery[$rTable]))) {
@@ -1631,7 +1631,7 @@ function updateTables() {
     checkTable("watch_categories");
     checkTable("watch_output");
 	checkTable("login_flood");
-    //checkTable("languages");
+    checkTable("languages");
     // R19 Early Access
     $rResult = $db->query("SHOW COLUMNS FROM `watch_folders` LIKE 'bouquets';");
     if (($rResult) && ($rResult->num_rows == 0)) {

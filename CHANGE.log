@@ -1,0 +1,5 @@
+---07.03.2020
+
+Abbilitata la funzione della selezione lingue: EN,IT,DE,ESP,RU
+
+Tolto gli commenti dai file originali, aggiunto il commando SQL per aggiungere le lingue nella tabella
