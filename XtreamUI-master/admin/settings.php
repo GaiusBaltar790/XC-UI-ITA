@@ -143,10 +143,10 @@ if ((isset($_POST["submit_settings"])) && (hasPermissions("adv", "settings"))) {
         $rAdminSettings["release_parser"] = $_POST["release_parser"];
         unset($_POST["release_parser"]);
     }
-    //if (isset($_POST["language"])) {
-        //$rAdminSettings["language"] = $_POST["language"];
-        //unset($_POST["language"]);
-    //}
+    if (isset($_POST["language"])) {
+        $rAdminSettings["language"] = $_POST["language"];
+        unset($_POST["language"]);
+    }
 	if (isset($_POST["recaptcha_v2_site_key"])) {
         $rAdminSettings["recaptcha_v2_site_key"] = $_POST["recaptcha_v2_site_key"];
         unset($_POST["recaptcha_v2_site_key"]);
@@ -378,7 +378,7 @@ if ($rSettings["sidebar"]) {
                                             <div class="tab-pane" id="xui">
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        <!--<div class="form-group row mb-4">
+                                                        <div class="form-group row mb-4">
                                                             <label class="col-md-4 col-form-label" for="language">UI Language</label>
                                                             <div class="col-md-8">
                                                                  <select name="language" id="language" class="form-control" data-toggle="select2">
@@ -387,7 +387,7 @@ if ($rSettings["sidebar"]) {
                                                                     <?php } ?>
                                                                 </select>
                                                             </div>
-                                                        </div>-->
+                                                        </div>
                                                         <div class="form-group row mb-4">
                                                             <label class="col-md-4 col-form-label" for="admin_username">Player Credentials <i data-toggle="tooltip" data-placement="top" title="" data-original-title="To play live streams in the Admin Interface, create a line with HLS output enabled and access to all bouquets. Enter the credentials here." class="mdi mdi-information"></i></label>
                                                             <div class="col-md-4">
