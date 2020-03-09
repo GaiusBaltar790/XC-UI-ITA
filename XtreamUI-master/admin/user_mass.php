@@ -43,12 +43,7 @@ if (isset($_POST["submit_user"])) {
         }
     }
     if (isset($_POST["c_bouquets"])) {
-        $rArray["bouquet"] = Array();
-		foreach ($_POST["bouquets_selected"] as $rBouquet) {
-			if (is_numeric($rBouquet)) {
-				$rArray["bouquet"][] = intval($rBouquet);
-			}
-		}
+        $rArray["bouquet"] = $_POST["bouquets_selected"];
         $rBouquetOrder = getBouquetOrder();
         $rOrderKeys = array_flip($rOrder);
         usort($rArray["bouquet"], function ($u1, $u2)  use ($rOrderKeys) {
