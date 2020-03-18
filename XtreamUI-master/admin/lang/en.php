@@ -824,5 +824,8 @@ $_ = Array(
 	"wednesday" => "Wednesday",
 	"years" => "Years",
 	"youtube_trailer" => "YouTube Trailer",
+	"messages" => "Messages",
+	"message" => "Message",
+	"create_message" => "Create Message",
 );
 ?>

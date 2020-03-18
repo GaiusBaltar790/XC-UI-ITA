@@ -288,7 +288,7 @@ $_ = Array(
     "a_to_z" => "A bis Z",
     "save_changes" => "Änderungen speichern",
     "copyright" => "Urheberrechte",
-    "early_access" => "Früher Zugang",
+    "early_access" => "Beta Version",
     "free_forever" => "Kostenlos & Open Source für immer",
     "delete_confirm" => "Möchten Sie diesen Bouquet wirklich löschen? Das kann nicht rückgängig gemacht werden!",
     "error_occured" => "Bei der Bearbeitung Ihrer Anfrage ist ein Fehler aufgetreten.",
@@ -825,5 +825,8 @@ $_ = Array(
 	"wednesday" => "Mittwoch",
 	"years" => "Jahre",
 	"youtube_trailer" => "YouTube Trailer",
+	"messages" => "Nachrichten",
+	"message" => "Nachricht",
+	"create_message" => "Erstelle Nachricht",
 );
 ?>
